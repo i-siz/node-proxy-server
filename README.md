@@ -10,5 +10,13 @@ To install required dependences:
 
 To run the application:
   ```sh
-  node index
+  npm run dev
   ```
+
+## Environmrnt variables
+
+Environment variables are stored in .env file and managed by [Dotenv dependency module](https://www.npmjs.com/package/dotenv)
+
+- **ASTEROIDS_FEED_URL** - URL for asteroids feed endpoint
+- **API_KEY** - NASA API key, which can be generated [here](https://api.nasa.gov/)
+- **PORT** - the port on which the proxy server will run

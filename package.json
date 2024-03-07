@@ -1,0 +1,28 @@
+{
+  "name": "node-proxy-server",
+  "version": "1.0.0",
+  "description": "This is a project for learning Node/Express. In fact it will be proxy server for original NASA API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-siz/node-proxy-server.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "proxy",
+    "nasa"
+  ],
+  "author": "Ilya Siz <i.siz@godeltech.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i-siz/node-proxy-server/issues"
+  },
+  "homepage": "https://github.com/i-siz/node-proxy-server#readme",
+  "dependencies": {
+    "axios": "^1.6.7"
+  }
+}

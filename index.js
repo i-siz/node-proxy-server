@@ -1,9 +1,8 @@
 const axios = require('axios');
+const { ASTEROIDS_FEED_URL, API_KEY } = require('./environment');
 
-const ASTEROIDS_FEED_URL = 'https://api.nasa.gov/neo/rest/v1/feed';
 const START_DATE = '2024-02-26';
 const END_DATE = '2024-03-01';
-const API_KEY = '25bgvc2BoAAFbanpF45eMXVX8mYkfq9z0TlD06xt';
 
 const printJsonToConsole = (asteroidsData) => {
   console.log(JSON.stringify(asteroidsData, null, 2));

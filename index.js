@@ -1,8 +1,13 @@
 const axios = require('axios');
-const { ASTEROIDS_FEED_URL, API_KEY } = require('./environment');
+const moment = require('moment');
 
-const START_DATE = '2024-02-26';
-const END_DATE = '2024-03-01';
+const DATE_TEMPLATE = 'YYYY-MM-DD';
+
+const lastFriday = moment().day(-2);
+const mondayPrecedingLastFriday = moment().day(-2).day(1);
+const startDate = mondayPrecedingLastFriday.format(DATE_TEMPLATE);
+const endDate = lastFriday.format(DATE_TEMPLATE)
+console.log(startDate, endDate);
 
 const printJsonToConsole = (asteroidsData) => {
   console.log(JSON.stringify(asteroidsData, null, 2));
@@ -24,15 +29,15 @@ const handleError = (error) => {
 }
 
 const getAsteroidsWithinPeriod = (startDate, endDate) => {
-  axios.get(ASTEROIDS_FEED_URL, {
+  axios.get(process.env.ASTEROIDS_FEED_URL, {
     params: {
       start_date: startDate,
       end_date: endDate,
-      api_key: API_KEY
+      api_key: process.env.API_KEY
     }
   })
     .then(handleResponse)
     .catch(handleError);
 }
 
-getAsteroidsWithinPeriod(START_DATE, END_DATE);
+getAsteroidsWithinPeriod(startDate, endDate);

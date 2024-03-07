@@ -4,6 +4,7 @@
   "description": "This is a project for learning Node/Express. In fact it will be proxy server for original NASA API.",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

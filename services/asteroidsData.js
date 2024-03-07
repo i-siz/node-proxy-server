@@ -1,16 +1,10 @@
 const axios = require('axios');
-const moment = require('moment');
+require('dotenv').config();
 
-const DATE_TEMPLATE = 'YYYY-MM-DD';
-
-const lastFriday = moment().day(-2);
-const mondayPrecedingLastFriday = moment().day(-2).day(1);
-const startDate = mondayPrecedingLastFriday.format(DATE_TEMPLATE);
-const endDate = lastFriday.format(DATE_TEMPLATE)
-console.log(startDate, endDate);
+const { ASTEROIDS_FEED_URL, API_KEY } = process.env;
 
 const printJsonToConsole = (asteroidsData) => {
-  console.log(JSON.stringify(asteroidsData, null, 2));
+  console.log(JSON.stringify(asteroidsData));
 }
 
 const printAsteroidsAmountToConsole = (asteroidsData) => {
@@ -22,22 +16,24 @@ const handleResponse = (response) => {
   const asteroidsData = response.data;
   printJsonToConsole(asteroidsData);
   printAsteroidsAmountToConsole(asteroidsData);
+  return asteroidsData;
 }
 
 const handleError = (error) => {
   console.error(`Error: ${error.message}`);
 }
 
-const getAsteroidsWithinPeriod = (startDate, endDate) => {
-  axios.get(process.env.ASTEROIDS_FEED_URL, {
+const getAsteroidsWithinPeriod = async (startDate, endDate) => {
+  const response = await axios.get(ASTEROIDS_FEED_URL, {
     params: {
       start_date: startDate,
       end_date: endDate,
-      api_key: process.env.API_KEY
+      api_key: API_KEY
     }
   })
     .then(handleResponse)
     .catch(handleError);
+  return response;
 }
 
-getAsteroidsWithinPeriod(startDate, endDate);
+module.exports = getAsteroidsWithinPeriod;

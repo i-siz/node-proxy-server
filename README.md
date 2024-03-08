@@ -13,7 +13,7 @@ To run the application:
   npm run dev
   ```
 
-## Environmrnt variables
+## Environment variables
 
 Environment variables are stored in .env file and managed by [Dotenv dependency module](https://www.npmjs.com/package/dotenv)
 

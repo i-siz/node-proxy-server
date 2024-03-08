@@ -1,11 +1,11 @@
-const moment = require('moment');
+const { previousFriday, previousMonday, format } = require("date-fns");
 
-const DATE_TEMPLATE = 'YYYY-MM-DD';
+const DATE_TEMPLATE = 'yyyy-MM-dd';
 
-const lastFriday = moment().day(-2);
-const mondayPrecedingLastFriday = moment().day(-2).day(1);
-const startDate = mondayPrecedingLastFriday.format(DATE_TEMPLATE);
-const endDate = lastFriday.format(DATE_TEMPLATE);
+const lastFriday = previousFriday(new Date());
+const mondayPrecedingLastFriday = previousMonday(lastFriday);
+const startDate = format(mondayPrecedingLastFriday, DATE_TEMPLATE);
+const endDate = format(lastFriday, DATE_TEMPLATE);
 
 module.exports = {
     startDate,

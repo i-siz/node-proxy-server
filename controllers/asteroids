@@ -1,5 +1,6 @@
 const getAsteroidsWithinPeriod = require('../services/asteroidsData');
 const { startDate, endDate } = require('../helpers/dates');
+const transformAsteroidsData = require('../transformers/asteroids');
 
 const handleError = (res, error) => {
     res.status(500).send(error.message);
@@ -8,7 +9,8 @@ const handleError = (res, error) => {
 const getAsteroidsData = async (req, res) => {
     try {
         const asteroidsData = await getAsteroidsWithinPeriod(startDate, endDate);
-        res.status(200).json(asteroidsData);
+        const transformedData = transformAsteroidsData(asteroidsData);
+        res.status(200).json(transformedData);
     } catch (error) {
         (error) => handleError(res, error);
     }

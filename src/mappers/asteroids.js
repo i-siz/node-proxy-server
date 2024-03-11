@@ -1,6 +1,6 @@
-const { getAverageValue } = require('../helpers/math');
+const { getAverageValue } = require('../helpers/math.js');
 
-const transformAsteroidsData = (asteroidsData) => ({
+const mapAsteroidsData = (asteroidsData) => ({
     meteors: Object.entries(asteroidsData.near_earth_objects)
         .sort((a, b) => Date.parse(a[0]) - Date.parse(b[0]))
         .map(([date, asteroidsInADay]) => ({
@@ -20,4 +20,4 @@ const transformAsteroidsData = (asteroidsData) => ({
         }))
 })
 
-module.exports = transformAsteroidsData;
+module.exports = mapAsteroidsData;

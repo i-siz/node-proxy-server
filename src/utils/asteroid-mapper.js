@@ -1,4 +1,4 @@
-const { getAverageValue } = require('../helpers/math');
+const getAverageValue = (array) => array.reduce((a, b) => a + b, 0) / array.length;
 
 const mapAsteroidsData = (asteroidsData) => ({
     meteors: Object.entries(asteroidsData.near_earth_objects)
@@ -20,4 +20,6 @@ const mapAsteroidsData = (asteroidsData) => ({
         }))
 })
 
-module.exports = mapAsteroidsData;
+module.exports = {
+    mapAsteroidsData,
+};

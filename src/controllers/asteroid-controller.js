@@ -1,6 +1,5 @@
 const { previousFriday, previousMonday, format } = require('date-fns');
-const getAsteroidsWithinPeriod = require('../services/asteroidsData');
-const mapAsteroidsData = require('../mappers/asteroids');
+const { asteroidService } = require('../services');
 
 const DATE_TEMPLATE = 'yyyy-MM-dd';
 
@@ -13,10 +12,9 @@ const handleError = (res, error) => {
     res.status(500).send(error.message);
 }
 
-const getAsteroidsData = async (req, res) => {
+const getAsteroids = async (req, res) => {
     try {
-        const asteroidsData = await getAsteroidsWithinPeriod(startDate, endDate);
-        const data = mapAsteroidsData(asteroidsData);
+        const data = await asteroidService.getAsteroidsWithinPeriod(startDate, endDate);
         res.json({ data });
     } catch (error) {
         (error) => handleError(res, error);
@@ -24,5 +22,5 @@ const getAsteroidsData = async (req, res) => {
 }
 
 module.exports = {
-    getAsteroidsData,
+    getAsteroids,
 };

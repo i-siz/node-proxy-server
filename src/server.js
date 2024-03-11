@@ -1,5 +1,5 @@
 const express = require('express');
-const meteorsRouter = require('./routes/meteors.js');
+const meteorsRouter = require('./routes/meteors');
 require('dotenv').config();
 
 const app = express();

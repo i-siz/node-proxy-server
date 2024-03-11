@@ -1,4 +1,4 @@
-const { getAverageValue } = require('../helpers/math.js');
+const { getAverageValue } = require('../helpers/math');
 
 const mapAsteroidsData = (asteroidsData) => ({
     meteors: Object.entries(asteroidsData.near_earth_objects)

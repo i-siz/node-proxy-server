@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAsteroidsData } = require('../controllers/asteroids.js');
+const { getAsteroidsData } = require('../controllers/asteroids');
 
 const router = express.Router();
 

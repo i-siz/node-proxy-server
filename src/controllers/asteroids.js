@@ -1,6 +1,6 @@
 const { previousFriday, previousMonday, format } = require('date-fns');
-const getAsteroidsWithinPeriod = require('../services/asteroidsData.js');
-const mapAsteroidsData = require('../mappers/asteroids.js');
+const getAsteroidsWithinPeriod = require('../services/asteroidsData');
+const mapAsteroidsData = require('../mappers/asteroids');
 
 const DATE_TEMPLATE = 'yyyy-MM-dd';
 

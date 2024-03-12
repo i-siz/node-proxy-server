@@ -1,18 +1,16 @@
 const { mapQueryToUserRequest } = require('../utils');
-const { userService } = require('../services');
+const { userService, roverPhotoService } = require('../services');
 
-const handleError = (res, error) => {
-    res.status(500).send(error.message);
-}
-
-const postUser = async (req, res) => {
+const postUser = async (req, res, next) => {
     const request = mapQueryToUserRequest(req.query);
 
     try {
-        const data = res.json(userService.processUserData(request));
-        res.json({ data });
+        // eslint-disable-next-line no-unused-vars
+        const userDataProcessed = await userService.processUserData(request);
+        const roverPhotoUrl = await roverPhotoService.getRoverPhotoUrl();
+        res.send(`<img src="${roverPhotoUrl}">`);
     } catch (error) {
-        (error) => handleError(res, error);
+        next(error);
     }
 }
 

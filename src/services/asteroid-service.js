@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { format, previousFriday, previousMonday } = require('date-fns');
 const { mapAsteroidsData } = require('../utils');
-const { asteroidsFeedUrl, apiKey } = require('../config');
+const { ASTEROIDS_FEED_URL, API_KEY } = require('../config/environment');
 
 const DATE_TEMPLATE = 'yyyy-MM-dd';
 
@@ -22,11 +22,11 @@ const getAsteroidsWithinPeriod = async (request) => {
   const startDate = format(mondayPrecedingFriday, DATE_TEMPLATE);
   const endDate = format(fridayPrecedingDate, DATE_TEMPLATE);
 
-  const response = await axios.get(asteroidsFeedUrl, {
+  const response = await axios.get(ASTEROIDS_FEED_URL, {
     params: {
       start_date: startDate,
       end_date: endDate,
-      api_key: apiKey
+      api_key: API_KEY
     }
   })
     .then((response) => handleResponse(request, response))

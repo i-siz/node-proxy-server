@@ -1,7 +1,8 @@
 const { mapAsteroidsData } = require('./asteroid-mapper');
-const { mapQueryToMeteorRequest } = require('./query-mapper');
+const { mapQueryToMeteorRequest, mapQueryToUserRequest } = require('./query-mapper');
 
 module.exports = {
     mapAsteroidsData,
     mapQueryToMeteorRequest,
+    mapQueryToUserRequest,
 };

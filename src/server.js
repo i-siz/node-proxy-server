@@ -1,11 +1,11 @@
 const express = require('express');
-const { port } = require('./config');
+const { PORT } = require('./config/environment');
 const { meteorRouter, userRouter } = require('./routes');
 
 const app = express();
 
-app.listen(port, (error) => {
-    error ? console.log(error.message) : console.log(`The server is running on port ${port}`);
+app.listen(PORT, (error) => {
+    error ? console.log(error.message) : console.log(`The server is running on port ${PORT}`);
 });
 
 app.use('/meteors', meteorRouter);

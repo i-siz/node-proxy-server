@@ -1,4 +1,4 @@
-const { UserRequest } = require('../dto');
+const { mapQueryToUserRequest } = require('../utils');
 const { userService } = require('../services');
 
 const handleError = (res, error) => {
@@ -6,7 +6,7 @@ const handleError = (res, error) => {
 }
 
 const postUser = async (req, res) => {
-    const request = new UserRequest(req.query);
+    const request = mapQueryToUserRequest(req.query);
 
     try {
         const data = res.json(userService.processUserData(request));

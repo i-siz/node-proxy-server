@@ -1,4 +1,4 @@
-const { MeteorRequest } = require('../dto');
+const { mapQueryToMeteorRequest } = require('../utils');
 const { asteroidService } = require('../services');
 
 const handleError = (res, error) => {
@@ -6,7 +6,7 @@ const handleError = (res, error) => {
 }
 
 const getAsteroids = async (req, res) => {
-    const request = new MeteorRequest(req.query);
+    const request = mapQueryToMeteorRequest(req.query);
 
     try {
         const data = await asteroidService.getAsteroidsWithinPeriod(request);

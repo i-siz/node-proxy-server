@@ -17,6 +17,9 @@ To run the application:
 
 Environment variables are stored in .env file and managed by [Dotenv dependency module](https://www.npmjs.com/package/dotenv)
 
-- **ASTEROIDS_FEED_URL** - URL for asteroids feed endpoint
+- **API_BASE_URL** - base NASA API url
+- **ASTEROIDS_FEED_ENDPOINT** - asteroids feed endpoint
+- **ROVER_PHOTO_ENDPOINT** - rover photo endpoint
+- **MANIFESTS_ENDPOINT** - rover mission manifest endpoint
 - **API_KEY** - NASA API key, which can be generated [here](https://api.nasa.gov/)
 - **PORT** - the port on which the proxy server will run

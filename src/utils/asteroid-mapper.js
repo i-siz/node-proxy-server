@@ -4,7 +4,7 @@ const mapAsteroidsData = (asteroidsData, countOnly, wereDangerousMeteors) => {
 
     const sortedObjectEntries = Object.entries(asteroidsData.near_earth_objects)
         .sort((a, b) => Date.parse(a[0]) - Date.parse(b[0]));
-    const meteorsArray = sortedObjectEntries.map(([date, asteroidsInADay]) => asteroidsInADay).flat();
+    const meteorsArray = sortedObjectEntries.map(([, asteroidsInADay]) => asteroidsInADay).flat();
     const meteorsCount = meteorsArray.length;
     const dangerous = wereDangerousMeteors && !countOnly ? {
         were_dangerous: meteorsArray.reduce((acc, currentValue) => acc || currentValue.is_potentially_hazardous_asteroid, false)

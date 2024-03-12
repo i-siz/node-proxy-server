@@ -1,6 +1,6 @@
 const express = require('express');
 const { port } = require('./config');
-const { meteorRouter } = require('./routes');
+const { meteorRouter, userRouter } = require('./routes');
 
 const app = express();
 
@@ -9,3 +9,4 @@ app.listen(port, (error) => {
 });
 
 app.use('/meteors', meteorRouter);
+app.use('/user', userRouter);

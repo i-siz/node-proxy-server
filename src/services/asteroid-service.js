@@ -10,10 +10,6 @@ const handleResponse = (request, response) => {
   return mapAsteroidsData(response.data, countOnly, wereDangerousMeteors);
 }
 
-const handleError = (error) => {
-  console.error(`Error: ${error.message}`);
-}
-
 const getAsteroidsWithinPeriod = async (request) => {
   const date = request.date ?? new Date();
 
@@ -28,10 +24,8 @@ const getAsteroidsWithinPeriod = async (request) => {
       end_date: endDate,
       api_key: API_KEY
     }
-  })
-    .then((response) => handleResponse(request, response))
-    .catch(handleError);
-  return response;
+  });
+  return handleResponse(request, response);
 }
 
 module.exports = {

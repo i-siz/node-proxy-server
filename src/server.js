@@ -1,7 +1,7 @@
 const express = require('express');
 const { server } = require('./config/environment');
 const { meteorRouter, userRouter } = require('./routes');
-const { exceptionFilter, pageNotFoundHandler } = require('./middleware');
+const { exceptionFilter, pageNotFoundHandler } = require('./middlewares');
 
 const { port } = server;
 

@@ -1,6 +1,6 @@
 const validators = require('../validators')
 
-const supportedMethods = ["get", "post", "put", "patch", "delete"];
+const supportedMethods = ['get', 'post', 'put', 'patch', 'delete'];
 
 const validationOptions = {
     abortEarly: false,

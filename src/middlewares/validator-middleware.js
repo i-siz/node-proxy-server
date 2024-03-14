@@ -8,22 +8,26 @@ const validationOptions = {
   stripUnknown: false,
 };
 
-const validator = (schemaName) => {
+const validator = (schemaName, sourceName) => {
   const validator = validators[schemaName];
   if (!validator) {
     throw new Error(`'${schemaName}' validator is not exist`);
   }
 
-  return (req, res, next) => {
+  return async (req, res, next) => {
     const method = req.method.toLowerCase();
     if (!supportedMethods.includes(method)) {
       next();
     }
 
-    const { error, value } = validator.validate(req.query, validationOptions);
+    const source = req[sourceName];
 
-    // validation failed
-    if (error) {
+    try {
+      await validator.validateAsync(source, validationOptions);
+      // validation successful
+      next();
+    } catch (error) {
+      // validation failed
       const joiError = {
         error: {
           original: error._original,
@@ -35,9 +39,6 @@ const validator = (schemaName) => {
       };
       return res.status(422).json(joiError);
     }
-    // validation successful
-    req.query = value;
-    next();
   };
 };
 

@@ -1,6 +1,7 @@
 const Sentry = require('@sentry/node');
 const { nodeProfilingIntegration } = require('@sentry/profiling-node');
 const express = require('express');
+const bodyParser = require('body-parser');
 const { server, sentry } = require('./config/environment');
 const { meteorRouter, userRouter } = require('./routes');
 const { exceptionFilter, pageNotFoundHandler } = require('./middlewares');
@@ -9,6 +10,12 @@ const { port } = server;
 const { dsn } = sentry;
 
 const app = express();
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
 
 Sentry.init({
   dsn,

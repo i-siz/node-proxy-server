@@ -6,39 +6,39 @@ const { DATE_TEMPLATE } = require('../constants/constants');
 const { baseUrl, manifestEndpoint, roverPhotoEndpoint, apiKey } = nasaApi;
 
 const getManifestData = async () => {
-    const manifestUrl = baseUrl + manifestEndpoint;
-    const manifestResponse = await axios.get(manifestUrl, {
-        params: {
-            api_key: apiKey,
-        },
-    });
-    return manifestResponse.data;
+  const manifestUrl = baseUrl + manifestEndpoint;
+  const manifestResponse = await axios.get(manifestUrl, {
+    params: {
+      api_key: apiKey,
+    },
+  });
+  return manifestResponse.data;
 };
 
 const getRoverPhotoData = async (dateFormatted) => {
-    const roverPhotoUrl = baseUrl + roverPhotoEndpoint;
-    const roverPhotoResponse = await axios.get(roverPhotoUrl, {
-        params: {
-            earth_date: dateFormatted,
-            api_key: apiKey,
-        },
-    });
-    return roverPhotoResponse.data;
+  const roverPhotoUrl = baseUrl + roverPhotoEndpoint;
+  const roverPhotoResponse = await axios.get(roverPhotoUrl, {
+    params: {
+      earth_date: dateFormatted,
+      api_key: apiKey,
+    },
+  });
+  return roverPhotoResponse.data;
 };
 
 const getRoverPhotoUrl = async () => {
-    const manifestData = await getManifestData();
+  const manifestData = await getManifestData();
 
-    const maxDate = new Date(manifestData.photo_manifest.max_date);
-    const maxDateFormatted = format(maxDate, DATE_TEMPLATE);
+  const maxDate = new Date(manifestData.photo_manifest.max_date);
+  const maxDateFormatted = format(maxDate, DATE_TEMPLATE);
 
-    const roverPhotoData = await getRoverPhotoData(maxDateFormatted);
-    const { photos } = roverPhotoData;
-    const lastPhoto = photos.pop();
+  const roverPhotoData = await getRoverPhotoData(maxDateFormatted);
+  const { photos } = roverPhotoData;
+  const lastPhoto = photos.pop();
 
-    return lastPhoto.img_src;
+  return lastPhoto.img_src;
 };
 
 module.exports = {
-    getRoverPhotoUrl,
+  getRoverPhotoUrl,
 };

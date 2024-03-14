@@ -1,5 +1,6 @@
-const axios = require('axios');
-const { format } = require('date-fns');
+import axios from 'axios';
+import { format } from 'date-fns';
+
 const { nasaApi } = require('../config/environment');
 const { DATE_TEMPLATE } = require('../constants/constants');
 
@@ -15,7 +16,7 @@ const getManifestData = async () => {
   return manifestResponse.data;
 };
 
-const getRoverPhotoData = async (dateFormatted) => {
+const getRoverPhotoData = async (dateFormatted: string) => {
   const roverPhotoUrl = baseUrl + roverPhotoEndpoint;
   const roverPhotoResponse = await axios.get(roverPhotoUrl, {
     params: {

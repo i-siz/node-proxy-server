@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const { asteroidController } = require('../controllers');
 const { validator } = require('../middlewares');
 

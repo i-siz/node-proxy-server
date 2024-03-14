@@ -1,4 +1,6 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const { API_BASE_URL, ASTEROIDS_FEED_ENDPOINT, ROVER_PHOTO_ENDPOINT, MANIFESTS_ENDPOINT, API_KEY, SENTRY_DSN, PORT } =
   process.env;

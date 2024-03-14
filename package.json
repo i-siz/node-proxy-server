@@ -2,11 +2,14 @@
   "name": "node-proxy-server",
   "version": "1.0.0",
   "description": "This is a project for learning Node/Express. In fact it will be proxy server for original NASA API.",
-  "main": "index.js",
+  "main": "dist/server.js",
+  "module": "nodenext",
   "scripts": {
-    "dev": "node --watch -r dotenv/config ./src/server.js",
+    "build": "npx tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "npx eslint .",
+    "eslint": "eslint ./src --ext .js,.ts",
     "prettier": "npx prettier --write ./src"
   },
   "repository": {
@@ -37,7 +40,14 @@
     "joi": "^17.12.2"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.27",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
     "eslint": "^8.57.0",
-    "prettier": "3.2.5"
+    "nodemon": "^3.1.0",
+    "prettier": "3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
   }
 }

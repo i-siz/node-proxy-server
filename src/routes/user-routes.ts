@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const { userController } = require('../controllers');
 const { validator } = require('../middlewares');
 

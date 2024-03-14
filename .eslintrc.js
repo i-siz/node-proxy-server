@@ -6,7 +6,13 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: 'eslint:recommended',
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   overrides: [
     {
       env: {
@@ -14,12 +20,14 @@ module.exports = {
       },
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: 'script',
+        sourceType: 'module',
       },
     },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-var-requires': 0,
+  },
 };

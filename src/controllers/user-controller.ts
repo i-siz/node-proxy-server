@@ -1,7 +1,9 @@
+import { Request, Response, NextFunction } from 'express';
+
 const { mapQueryToUserRequest } = require('../utils');
 const { userService, roverPhotoService } = require('../services');
 
-const postUser = async (req, res, next) => {
+const postUser = async (req: Request, res: Response, next: NextFunction) => {
   const request = mapQueryToUserRequest(req.body);
 
   try {

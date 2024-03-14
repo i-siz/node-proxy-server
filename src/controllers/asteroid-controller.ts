@@ -1,7 +1,9 @@
+import { Request, Response, NextFunction } from 'express';
+
 const { mapQueryToMeteorRequest } = require('../utils');
 const { asteroidService } = require('../services');
 
-const getAsteroids = async (req, res, next) => {
+const getAsteroids = async (req: Request, res: Response, next: NextFunction) => {
   const request = mapQueryToMeteorRequest(req.query);
 
   try {

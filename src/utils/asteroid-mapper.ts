@@ -1,6 +1,32 @@
-const getAverageValue = (array) => array.reduce((a, b) => a + b, 0) / array.length;
+const getAverageValue = (array: number[]) => array.reduce((a, b) => a + b, 0) / array.length;
 
-const mapAsteroidsData = (asteroidsData, countOnly, wereDangerousMeteors) => {
+interface CloseApproachDataItem {
+  close_approach_date_full: string;
+  relative_velocity: {
+    kilometers_per_second: string;
+  };
+}
+
+interface AsteroidInfo {
+  id: string;
+  name: string;
+  estimated_diameter: {
+    meters: {
+      estimated_diameter_min: number;
+      estimated_diameter_max: number;
+    };
+  };
+  is_potentially_hazardous_asteroid: boolean;
+  close_approach_data: CloseApproachDataItem[];
+}
+
+interface AsteroidData {
+  near_earth_objects: {
+    date: AsteroidInfo[];
+  };
+}
+
+export const mapAsteroidsData = (asteroidsData: AsteroidData, countOnly: boolean, wereDangerousMeteors: boolean) => {
   const sortedObjectEntries = Object.entries(asteroidsData.near_earth_objects).sort(
     (a, b) => Date.parse(a[0]) - Date.parse(b[0]),
   );

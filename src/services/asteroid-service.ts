@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios, { AxiosResponse } from 'axios';
 const { format, previousFriday, previousMonday } = require('date-fns');
 const { mapAsteroidsData } = require('../utils');
 const { nasaApi } = require('../config/environment');
@@ -6,12 +6,19 @@ const { DATE_TEMPLATE } = require('../constants/constants');
 
 const { baseUrl, asteroidsFeedEndpoint, apiKey } = nasaApi;
 
-const handleResponse = (request, response) => {
+const handleResponse = (
+  request: { date?: Date; countOnly?: boolean; wereDangerousMeteors?: boolean },
+  response: AxiosResponse,
+) => {
   const { countOnly, wereDangerousMeteors } = request;
   return mapAsteroidsData(response.data, countOnly, wereDangerousMeteors);
 };
 
-const getAsteroidsWithinPeriod = async (request) => {
+const getAsteroidsWithinPeriod = async (request: {
+  date?: Date;
+  countOnly?: boolean;
+  wereDangerousMeteors?: boolean;
+}) => {
   const date = request.date ?? new Date();
 
   const fridayPrecedingDate = previousFriday(date);

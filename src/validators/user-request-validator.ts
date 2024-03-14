@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const userRequestSchema = Joi.object({
   user_id: Joi.number().required(),

@@ -8,5 +8,5 @@ const router = express.Router();
 router.post('/', validator('userRequest'), userController.postUser);
 
 module.exports = {
-    userRouter: router,
+  userRouter: router,
 };

@@ -9,7 +9,7 @@ const { baseUrl, asteroidsFeedEndpoint, apiKey } = nasaApi;
 const handleResponse = (request, response) => {
   const { countOnly, wereDangerousMeteors } = request;
   return mapAsteroidsData(response.data, countOnly, wereDangerousMeteors);
-}
+};
 
 const getAsteroidsWithinPeriod = async (request) => {
   const date = request.date ?? new Date();
@@ -25,11 +25,11 @@ const getAsteroidsWithinPeriod = async (request) => {
     params: {
       start_date: startDate,
       end_date: endDate,
-      api_key: apiKey
-    }
+      api_key: apiKey,
+    },
   });
   return handleResponse(request, response);
-}
+};
 
 module.exports = {
   getAsteroidsWithinPeriod,

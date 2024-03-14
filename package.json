@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch -r dotenv/config ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "npx eslint ."
+    "eslint": "npx eslint .",
+    "prettier": "npx prettier --write ./src"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,8 @@
   "homepage": "https://github.com/i-siz/node-proxy-server#readme",
   "dependencies": {
     "@joi/date": "^2.1.0",
+    "@sentry/node": "^7.106.1",
+    "@sentry/profiling-node": "^7.106.1",
     "axios": "^1.6.7",
     "date-fns": "^3.3.1",
     "dotenv": "^16.4.5",
@@ -33,6 +36,7 @@
     "joi": "^17.12.2"
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "prettier": "3.2.5"
   }
 }

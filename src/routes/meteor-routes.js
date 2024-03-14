@@ -8,5 +8,5 @@ const router = express.Router();
 router.get('/', validator('asteroidRequest'), asteroidController.getAsteroids);
 
 module.exports = {
-    meteorRouter: router,
+  meteorRouter: router,
 };

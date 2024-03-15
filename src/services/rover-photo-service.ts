@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { constants } from '../constants/constants';
+
 const { format } = require('date-fns');
 const { nasaApi } = require('../config/environment');
 
@@ -26,7 +27,7 @@ const getRoverPhotoData = async (dateFormatted: string) => {
   return roverPhotoResponse.data;
 };
 
-const getRoverPhotoUrl = async () => {
+export const getRoverPhotoUrl = async () => {
   const manifestData = await getManifestData();
 
   const maxDate = new Date(manifestData.photo_manifest.max_date);
@@ -38,5 +39,3 @@ const getRoverPhotoUrl = async () => {
 
   return lastPhoto.img_src;
 };
-
-export { getRoverPhotoUrl };

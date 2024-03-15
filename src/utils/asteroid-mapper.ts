@@ -69,7 +69,3 @@ export const mapAsteroidsData = (asteroidsData: AsteroidData, countOnly: boolean
     ...meteors,
   };
 };
-
-module.exports = {
-  mapAsteroidsData,
-};

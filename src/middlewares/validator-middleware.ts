@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ValidationError } from 'joi';
+
 const validators = require('../validators');
 
 const supportedMethods = ['get', 'post', 'put', 'patch', 'delete'];

@@ -1,7 +1,4 @@
-const asteroidRequest = require('./asteroid-request-validator');
-const userRequest = require('./user-request-validator');
+import { asteroidRequest } from './asteroid-request-validator';
+import { userRequest } from './user-request-validator';
 
-module.exports = {
-  asteroidRequest,
-  userRequest,
-};
+export { asteroidRequest, userRequest };

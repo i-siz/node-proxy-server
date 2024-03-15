@@ -12,19 +12,17 @@
     {% for date_key, meteors_in_a_date in date %}
     <h3>{{ date_key }}:</h3>
     <div>
-      <div>
-        <ul>
-          {% for meteor in meteors_in_a_date %}
-          <li>ID: {{ meteor.id }}</li>
-          <li>Name: {{ meteor.name }}</li>
-          <li>Average diameter (m): {{ meteor.average_diameter_in_meters }}</li>
-          <li>Is hazardous: {{ meteor.is_potentially_hazardous_asteroid }}</li>
-          <li>Approach date: {{ meteor.close_approach_date_full }}</li>
-          <li>Velocity (kps): {{ meteor.relative_velocity_in_kilometers_per_second }}</li>
-          <hr />
-          {% endfor %}
-        </ul>
-      </div>
+      <ul>
+        {% for meteor in meteors_in_a_date %}
+        <li>ID: {{ meteor.id }}</li>
+        <li>Name: {{ meteor.name }}</li>
+        <li>Average diameter (m): {{ meteor.average_diameter_in_meters }}</li>
+        <li>Is hazardous: {{ meteor.is_potentially_hazardous_asteroid }}</li>
+        <li>Approach date: {{ meteor.close_approach_date_full }}</li>
+        <li>Velocity (kps): {{ meteor.relative_velocity_in_kilometers_per_second }}</li>
+        <hr />
+        {% endfor %}
+      </ul>
     </div>
     {% endfor %}
   </div>

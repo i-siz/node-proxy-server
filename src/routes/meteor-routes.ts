@@ -1,10 +1,12 @@
 import express from 'express';
 import { validator } from '../middlewares/validator-middleware';
-const { asteroidController } = require('../controllers');
+const { asteroidApiController, asteroidWebController } = require('../controllers');
 
 const meteorRouter = express.Router();
 
 // Get asteroids data
-meteorRouter.get('/', validator('asteroidRequest', 'query'), asteroidController.getAsteroids);
+meteorRouter.get('/api/meteors', validator('asteroidRequest', 'query'), asteroidApiController.getAsteroids);
+// Display asteroids data
+meteorRouter.get('/meteors', validator('asteroidRequest', 'query'), asteroidWebController.displayAsteroids);
 
 export default meteorRouter;

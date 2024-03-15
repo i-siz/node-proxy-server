@@ -1,4 +1,6 @@
-const asteroidController = require('./asteroid-controller');
-const userController = require('./user-controller');
+const asteroidApiController = require('./asteroid-api-controller');
+const asteroidWebController = require('./asteroid-web-controller');
+const userApiController = require('./user-api-controller');
+const userWebController = require('./user-web-controller');
 
-export { asteroidController, userController };
+export { asteroidApiController, asteroidWebController, userApiController, userWebController };

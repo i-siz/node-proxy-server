@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Get asteroids data
 router.get('/api/meteors', validator('asteroidRequest', 'query'), asteroidApiController.getAsteroids);
-// Get asteroids data
+// Display asteroids data
 router.get('/meteors', validator('asteroidRequest', 'query'), asteroidWebController.displayAsteroids);
 
 module.exports = {

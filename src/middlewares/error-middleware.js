@@ -1,3 +1,5 @@
+const path = require('path');
+
 // eslint-disable-next-line no-unused-vars
 const exceptionFilter = (err, req, res, next) => {
   const errorCode = err.statusCode || 500;
@@ -9,7 +11,8 @@ const exceptionFilter = (err, req, res, next) => {
   res.status(errorCode).json(error);
 };
 
-const pageNotFoundHandler = (req, res) => res.status(404).json({ message: 'Page not found' });
+const pageNotFoundHandler = (req, res) =>
+  res.render(path.resolve(__dirname, '../views', 'page-not-found.html'), { title: 'Page not found' });
 
 module.exports = {
   exceptionFilter,

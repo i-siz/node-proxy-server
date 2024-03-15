@@ -22,7 +22,7 @@ interface AsteroidInfo {
 
 interface AsteroidData {
   near_earth_objects: {
-    date: AsteroidInfo[];
+    [key: string]: AsteroidInfo[];
   };
 }
 

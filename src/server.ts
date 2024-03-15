@@ -1,10 +1,10 @@
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
-
+import userRouter from './routes/user-routes';
+import meteorRouter from './routes/meteor-routes';
+import { sentryInitiator } from './logging/sentry-initiator';
+import { exceptionFilter, pageNotFoundHandler } from './middlewares/error-middleware';
 const { server } = require('./config/environment');
-const { meteorRouter, userRouter } = require('./routes');
-const { exceptionFilter, pageNotFoundHandler } = require('./middlewares');
-const { sentryInitiator } = require('./logging/sentry-initiator');
 
 const { port } = server;
 

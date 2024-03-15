@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-const exceptionFilter = (
+export const exceptionFilter = (
   err: { statusCode: number; message: string; errors: object[] },
   req: Request,
   res: Response,
@@ -14,9 +14,4 @@ const exceptionFilter = (
   res.status(errorCode).json(error);
 };
 
-const pageNotFoundHandler = (req: Request, res: Response) => res.status(404).json({ message: 'Page not found' });
-
-module.exports = {
-  exceptionFilter,
-  pageNotFoundHandler,
-};
+export const pageNotFoundHandler = (req: Request, res: Response) => res.status(404).json({ message: 'Page not found' });

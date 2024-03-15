@@ -10,7 +10,7 @@ const validationOptions = {
   stripUnknown: false,
 };
 
-const validator = (schemaName: string, sourceName: string) => {
+export const validator = (schemaName: string, sourceName: string) => {
   const validator = validators[schemaName];
   if (!validator) {
     throw new Error(`'${schemaName}' validator is not exist`);
@@ -47,5 +47,3 @@ const validator = (schemaName: string, sourceName: string) => {
     }
   };
 };
-
-module.exports = validator;

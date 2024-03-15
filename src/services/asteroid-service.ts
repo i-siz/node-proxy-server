@@ -1,8 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
+import { constants } from '../constants/constants';
+
 const { format, previousFriday, previousMonday } = require('date-fns');
 const { mapAsteroidsData } = require('../utils');
 const { nasaApi } = require('../config/environment');
-const { DATE_TEMPLATE } = require('../constants/constants');
 
 const { baseUrl, asteroidsFeedEndpoint, apiKey } = nasaApi;
 
@@ -23,8 +24,8 @@ const getAsteroidsWithinPeriod = async (request: {
 
   const fridayPrecedingDate = previousFriday(date);
   const mondayPrecedingFriday = previousMonday(fridayPrecedingDate);
-  const startDate = format(mondayPrecedingFriday, DATE_TEMPLATE);
-  const endDate = format(fridayPrecedingDate, DATE_TEMPLATE);
+  const startDate = format(mondayPrecedingFriday, constants.DATE_TEMPLATE);
+  const endDate = format(fridayPrecedingDate, constants.DATE_TEMPLATE);
 
   const asteroidsFeedUrl = baseUrl + asteroidsFeedEndpoint;
 

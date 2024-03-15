@@ -1,13 +1,13 @@
 import { Express } from 'express';
 import * as Sentry from '@sentry/node';
 import { nodeProfilingIntegration } from '@sentry/profiling-node';
+import '../config/environment';
 
-const { sentry } = require('../config/environment');
-const { dsn } = sentry;
+const { SENTRY_DSN } = process.env;
 
 export const sentryInitiator = (app: Express) => {
   Sentry.init({
-    dsn,
+    dsn: SENTRY_DSN,
     integrations: [
       new Sentry.Integrations.Http({ tracing: true }),
       new Sentry.Integrations.Express({ app }),

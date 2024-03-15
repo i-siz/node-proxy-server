@@ -1,27 +1,26 @@
 import axios from 'axios';
 import { constants } from '../constants/constants';
+import { format } from 'date-fns';
+import '../config/environment';
 
-const { format } = require('date-fns');
-const { nasaApi } = require('../config/environment');
-
-const { baseUrl, manifestEndpoint, roverPhotoEndpoint, apiKey } = nasaApi;
+const { API_BASE_URL, MANIFESTS_ENDPOINT, ROVER_PHOTO_ENDPOINT, API_KEY } = process.env;
 
 const getManifestData = async () => {
-  const manifestUrl = baseUrl + manifestEndpoint;
+  const manifestUrl = String(API_BASE_URL) + String(MANIFESTS_ENDPOINT);
   const manifestResponse = await axios.get(manifestUrl, {
     params: {
-      api_key: apiKey,
+      api_key: API_KEY,
     },
   });
   return manifestResponse.data;
 };
 
 const getRoverPhotoData = async (dateFormatted: string) => {
-  const roverPhotoUrl = baseUrl + roverPhotoEndpoint;
+  const roverPhotoUrl = String(API_BASE_URL) + String(ROVER_PHOTO_ENDPOINT);
   const roverPhotoResponse = await axios.get(roverPhotoUrl, {
     params: {
       earth_date: dateFormatted,
-      api_key: apiKey,
+      api_key: API_KEY,
     },
   });
   return roverPhotoResponse.data;

@@ -6,9 +6,9 @@ import { sentryInitiator } from './logging/sentry-initiator';
 import { exceptionFilter, pageNotFoundHandler } from './middlewares/error-middleware';
 import path from 'path';
 import nunjucks from 'nunjucks';
-import './config/environment';
+import { environment } from './config/environment';
 
-const { PORT } = process.env;
+const { port } = environment.server;
 
 const app: Express = express();
 const Sentry = sentryInitiator(app);
@@ -39,6 +39,6 @@ app.use('*', pageNotFoundHandler);
 
 app.set('view engine', 'html');
 
-app.listen(PORT, () => {
-  console.log(`The server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`The server is running on port ${port}`);
 });

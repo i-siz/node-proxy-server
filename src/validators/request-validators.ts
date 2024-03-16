@@ -1,4 +1,6 @@
-const Joi = require('joi').extend(require('@joi/date'));
+import CoreJoi from 'joi';
+import * as JoiDate from '@joi/date';
+const Joi = CoreJoi.extend(JoiDate.default(CoreJoi)) as typeof CoreJoi;
 
 const asteroidRequest = Joi.object({
   date: Joi.date().less('now').format('YYYY-MM-DD'),

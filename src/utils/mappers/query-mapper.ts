@@ -1,4 +1,4 @@
-import { MeteorQuery, UserQuery } from './types/queries';
+import { MeteorQuery, UserQuery } from '../types/queries';
 
 export const mapQueryToMeteorRequest = (query: MeteorQuery) => ({
   date: typeof query.date !== 'undefined' ? new Date(query.date) : null,

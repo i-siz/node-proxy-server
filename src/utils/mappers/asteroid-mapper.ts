@@ -1,4 +1,4 @@
-import { AsteroidData } from './types/asteroid-data';
+import { AsteroidData } from '../types/asteroid-data';
 
 const getAverageValue = (array: number[]) => array.reduce((a, b) => a + b, 0) / array.length;
 

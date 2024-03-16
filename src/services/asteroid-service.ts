@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from 'axios';
 import { constants } from '../constants/constants';
-import { mapAsteroidsData } from '../utils/asteroid-mapper';
+import { mapAsteroidsData } from '../utils/mappers/asteroid-mapper';
 import { format, previousFriday, previousMonday } from 'date-fns';
 import { MeteorRequest } from '../utils/types/requests';
-import '../config/environment';
+import { environment } from '../config/environment';
 
-const { API_BASE_URL, ASTEROIDS_FEED_ENDPOINT, API_KEY } = process.env;
+const { baseUrl, asteroidsFeedEndpoint, apiKey } = environment.nasaApi;
 
 const handleResponse = (request: MeteorRequest, response: AxiosResponse) => {
   const { countOnly, wereDangerousMeteors } = request;
@@ -20,13 +20,13 @@ export const getAsteroidsWithinPeriod = async (request: MeteorRequest) => {
   const startDate = format(mondayPrecedingFriday, constants.DATE_TEMPLATE);
   const endDate = format(fridayPrecedingDate, constants.DATE_TEMPLATE);
 
-  const asteroidsFeedUrl = String(API_BASE_URL) + String(ASTEROIDS_FEED_ENDPOINT);
+  const asteroidsFeedUrl = baseUrl + asteroidsFeedEndpoint;
 
   const response = await axios.get(asteroidsFeedUrl, {
     params: {
       start_date: startDate,
       end_date: endDate,
-      api_key: API_KEY,
+      api_key: apiKey,
     },
   });
   return handleResponse(request, response);

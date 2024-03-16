@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
 import { getRoverPhotoUrl } from '../services/rover-photo-service';
 import { processUserData } from '../services/user-service';
-import { mapQueryToUserRequest } from '../utils/query-mapper';
+import { mapQueryToUserRequest } from '../utils/mappers/query-mapper';
 import { TypedRequestBody } from '../utils/types/typed-requests';
 
 export const displayRover = async (

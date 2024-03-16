@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { getAsteroidsWithinPeriod } from '../services/asteroid-service';
-import { mapQueryToMeteorRequest } from '../utils/query-mapper';
+import { mapQueryToMeteorRequest } from '../utils/mappers/query-mapper';
 import { TypedRequestQuery } from '../utils/types/typed-requests';
 
 export const getAsteroids = async (

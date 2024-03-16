@@ -2,23 +2,17 @@ import axios, { AxiosResponse } from 'axios';
 import { constants } from '../constants/constants';
 import { mapAsteroidsData } from '../utils/asteroid-mapper';
 import { format, previousFriday, previousMonday } from 'date-fns';
+import { MeteorRequest } from '../utils/types/requests';
 import '../config/environment';
 
 const { API_BASE_URL, ASTEROIDS_FEED_ENDPOINT, API_KEY } = process.env;
 
-const handleResponse = (
-  request: { date: Date; countOnly: boolean; wereDangerousMeteors: boolean },
-  response: AxiosResponse,
-) => {
+const handleResponse = (request: MeteorRequest, response: AxiosResponse) => {
   const { countOnly, wereDangerousMeteors } = request;
   return mapAsteroidsData(response.data, countOnly, wereDangerousMeteors);
 };
 
-export const getAsteroidsWithinPeriod = async (request: {
-  date: Date;
-  countOnly: boolean;
-  wereDangerousMeteors: boolean;
-}) => {
+export const getAsteroidsWithinPeriod = async (request: MeteorRequest) => {
   const date = request.date ?? new Date();
 
   const fridayPrecedingDate = previousFriday(date);

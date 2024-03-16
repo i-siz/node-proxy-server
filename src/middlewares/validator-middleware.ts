@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ValidationError } from 'joi';
-
-const validators = require('../validators');
+import validators from '../validators/request-validators';
 
 const supportedMethods = ['get', 'post', 'put', 'patch', 'delete'];
 
@@ -12,7 +11,8 @@ const validationOptions = {
 };
 
 export const validator = (schemaName: string, sourceName: string) => {
-  const validator = validators[schemaName];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const validator = (<any>validators)[schemaName];
   if (!validator) {
     throw new Error(`'${schemaName}' validator is not exist`);
   }

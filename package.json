@@ -2,11 +2,18 @@
   "name": "node-proxy-server",
   "version": "1.0.0",
   "description": "This is a project for learning Node/Express. In fact it will be proxy server for original NASA API.",
-  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": ">=8.10.0"
+  },
   "scripts": {
-    "dev": "node --watch -r dotenv/config ./src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "npx eslint .",
+    "build": "tsc",
+    "copy-files": "copyfiles -u 1 src/**/*.html src/**/*.css dist/",
+    "start": "node ./dist/server.js",
+    "dev": "nodemon",
+    "test": "jest",
+    "lint": "eslint ./src --ext .js,.ts",
+    "lint-and-fix": "eslint ./src --ext .js,.ts --fix",
     "prettier": "npx prettier --write ./src"
   },
   "repository": {
@@ -38,7 +45,25 @@
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.27",
+    "@types/nunjucks": "^3.2.6",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.57.0",
-    "prettier": "3.2.5"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.7.0",
+    "jest-mock-extended": "^3.0.5",
+    "nodemon": "^3.1.0",
+    "prettier": "3.2.5",
+    "ts-jest": "^29.1.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.2"
   }
 }

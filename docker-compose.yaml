@@ -1,0 +1,11 @@
+services:
+  server:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 4000:4000
+    command: npm run start

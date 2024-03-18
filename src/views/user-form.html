@@ -1,0 +1,25 @@
+{% extends "./layout.html" %}
+
+{% block content %}
+
+<form id="user-form" method="post" action="/user">
+  <div class="form-info">
+    <div class="form-field">
+      <label>User ID</label>
+      <input class="input-field" type="number" name="user_id" />
+    </div>
+    <div class="form-field">
+      <label>User name</label>
+      <input class="input-field" type="text" name="user_name" />
+    </div>
+    <div class="form-field">
+      <label>API key</label>
+      <input class="input-field" type="text" name="api_key" />
+    </div>
+    <div class="form-submit">
+      <input type="submit" value="Submit" />
+    </div>
+  </div>
+</form>
+
+{% endblock %}

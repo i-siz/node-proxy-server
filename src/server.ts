@@ -1,5 +1,4 @@
 import express, { Express } from 'express';
-import bodyParser from 'body-parser';
 import userRouter from './routes/user-routes';
 import meteorRouter from './routes/meteor-routes';
 import { sentryInitiator } from './logging/sentry-initiator';
@@ -18,11 +17,7 @@ nunjucks.configure(path.resolve(__dirname, './views'), {
   express: app,
 });
 
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  }),
-);
+app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '.', 'public')));
 

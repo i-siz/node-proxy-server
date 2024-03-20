@@ -20,7 +20,7 @@ export const displayRover = async (
   const request = mapQueryToUserRequest(req.body);
 
   try {
-    await processUserData(request);
+    processUserData(request);
     const roverPhotoUrl = await getRoverPhotoUrl();
     res.render('user.html', { roverPhotoUrl, title: 'Rover photo' });
   } catch (error) {

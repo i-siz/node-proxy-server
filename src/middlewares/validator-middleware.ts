@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ValidationError } from 'joi';
-import validators from '../validators/request-validators';
+import { Schema, ValidationError } from 'joi';
 
 const supportedMethods = ['get', 'post', 'put', 'patch', 'delete'];
 
@@ -10,23 +9,17 @@ const validationOptions = {
   stripUnknown: false,
 };
 
-export const validator = (schemaName: string, sourceName: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const validator = (<any>validators)[schemaName];
-  if (!validator) {
-    throw new Error(`'${schemaName}' validator is not exist`);
-  }
-
+export const validator = (schema: Schema, sourceName: keyof Request) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     const method = req.method.toLowerCase();
     if (!supportedMethods.includes(method)) {
       next();
     }
 
-    const source = req[sourceName as keyof Request];
+    const source = req[sourceName];
 
     try {
-      await validator.validateAsync(source, validationOptions);
+      await schema.validateAsync(source, validationOptions);
       // validation successful
       next();
     } catch (error) {

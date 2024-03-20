@@ -12,6 +12,7 @@
     "start": "node ./dist/server.js",
     "dev": "nodemon",
     "test": "jest",
+    "test-coverage": "jest --coverage",
     "lint": "eslint ./src --ext .js,.ts",
     "lint-and-fix": "eslint ./src --ext .js,.ts --fix",
     "prettier": "npx prettier --write ./src"

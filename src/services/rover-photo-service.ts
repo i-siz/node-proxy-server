@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { constants } from '../constants/constants';
 import { format } from 'date-fns';
+import { constants } from '../constants/constants';
 import { environment } from '../config/environment';
 
 const { baseUrl, manifestEndpoint, roverPhotoEndpoint, apiKey } = environment.nasaApi;

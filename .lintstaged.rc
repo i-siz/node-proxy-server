@@ -1,0 +1,4 @@
+{
+  "/src/!(*test).js": "eslint ./src --ext .js,.ts --fix",
+  "/src/!(*test).ts": "eslint ./src --ext .js,.ts --fix"
+}

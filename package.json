@@ -23,6 +23,11 @@
       "pre-commit": "npm run precommit"
     }
   },
+  "lint-staged": {
+    "*.ts": [
+      "eslint ./src --ext .ts --fix"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/i-siz/node-proxy-server.git"

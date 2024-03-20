@@ -27,7 +27,7 @@ describe('UserWebController', () => {
     let res: any;
 
     beforeAll(() => {
-      mockedAxios.get.mockImplementation();
+      // mockedAxios.get.mockImplementation();
 
       const req = {
         body: {

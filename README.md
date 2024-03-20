@@ -52,6 +52,20 @@ To run Prettier (format code):
 npm run prettier
 ```
 
+To run tests:
+
+```sh
+npm run test
+```
+
+To run tests and collect coverage information when executing tests:
+
+```sh
+npm run test-coverage
+```
+
+Coverage report can be found in `coverage` folder: [coverage/lcov-report/index.html](coverage/lcov-report/index.html)
+
 ## Environment variables
 
 Environment variables are stored in .env file and managed by [Dotenv dependency module](https://www.npmjs.com/package/dotenv)
@@ -96,7 +110,7 @@ make up
 make up-dev
 ```
 
-Open your browser and go to [localhost:4000/meteors](http://localhost:4000/meteors) or use Postman instead.
+Open your browser and go to [localhost:4000/meteors](http://localhost:4000/meteors) or [localhost:4000/user](http://localhost:4000/user) or just use Postman instead.
 
 To shut down the docker container:
 

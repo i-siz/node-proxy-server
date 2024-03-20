@@ -5,4 +5,5 @@
 **/Dockerfile*
 **/npm-debug.log
 **/dist
+coverage
 README.md

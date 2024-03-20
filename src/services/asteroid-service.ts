@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
+import { format, previousFriday, previousMonday } from 'date-fns';
 import { constants } from '../constants/constants';
 import { mapAsteroidsData } from '../utils/mappers/asteroid-mapper';
-import { format, previousFriday, previousMonday } from 'date-fns';
 import { MeteorRequest } from '../utils/types/requests';
 import { environment } from '../config/environment';
 

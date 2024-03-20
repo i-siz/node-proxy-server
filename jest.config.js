@@ -2,12 +2,12 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {
-    '.(ts|tsx)': 'ts-jest',
-  },
-  globals: {
-    'ts-jest': {
-      compiler: 'typescript',
-    },
+    '.(ts|tsx)': [
+      'ts-jest',
+      {
+        compiler: 'typescript',
+      },
+    ],
   },
   testMatch: ['**/*.test.ts', '**/*.spec.ts'],
   collectCoverageFrom: ['**/*.ts'],

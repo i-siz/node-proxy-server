@@ -3,6 +3,7 @@ import { getRoverPhotoUrl } from '../services/rover-photo-service';
 import { processUserData } from '../services/user-service';
 import { mapQueryToUserRequest } from '../utils/mappers/query-mapper';
 import { TypedRequestBody } from '../utils/types/typed-requests';
+import { UserQuery } from '../utils/types/queries';
 
 export const displayUserForm = (req: object, res: Response, next: NextFunction) => {
   try {
@@ -12,11 +13,7 @@ export const displayUserForm = (req: object, res: Response, next: NextFunction) 
   }
 };
 
-export const displayRover = async (
-  req: TypedRequestBody<{ user_id: number; user_name: string; api_key: string }>,
-  res: Response,
-  next: NextFunction,
-) => {
+export const displayRover = async (req: TypedRequestBody<UserQuery>, res: Response, next: NextFunction) => {
   const request = mapQueryToUserRequest(req.body);
 
   try {

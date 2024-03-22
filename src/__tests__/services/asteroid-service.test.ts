@@ -20,7 +20,7 @@ describe('asteroidService', () => {
 
   it('should get asteroids within period when date is provided', async () => {
     const meteorRequest = {
-      date: new Date(2024, 3, 10),
+      date: new Date('2024-03-10'),
       countOnly,
       wereDangerousMeteors,
     };

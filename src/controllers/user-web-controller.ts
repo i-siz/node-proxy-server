@@ -6,11 +6,7 @@ import { TypedRequestBody } from '../utils/types/typed-requests';
 import { UserQuery } from '../utils/types/queries';
 
 export const displayUserForm = (req: object, res: Response, next: NextFunction) => {
-  try {
-    res.render('user-form.html', { title: 'User form' });
-  } catch (error) {
-    next(error);
-  }
+  res.render('user-form.html', { title: 'User form' });
 };
 
 export const displayRover = async (req: TypedRequestBody<UserQuery>, res: Response, next: NextFunction) => {

@@ -3,7 +3,6 @@ import path from 'path';
 import Exception from '../utils/exceptions/exception';
 
 export const exceptionFilter = (err: Exception | Error, req: Request, res: Response, next: NextFunction) => {
-  console.log(err);
   res.render(path.resolve(__dirname, '..', 'views', 'error.html'), { message: err.message, title: 'Error' });
 };
 

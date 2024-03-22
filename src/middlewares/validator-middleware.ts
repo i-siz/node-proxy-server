@@ -13,7 +13,7 @@ export const validator = (schema: Schema, sourceName: keyof Request) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     const method = req.method.toLowerCase();
     if (!supportedMethods.includes(method)) {
-      next();
+      return next();
     }
 
     const source = req[sourceName];

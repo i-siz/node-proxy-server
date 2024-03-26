@@ -22,14 +22,16 @@ describe('asteroid api controller', () => {
     json: jest.fn(),
   } as unknown as Response;
   const next = jest.fn();
+  const mockMapQueryToMeteorRequest = mapQueryToMeteorRequest as jest.Mock;
+  const mockGetAsteroidsWithinPeriod = getAsteroidsWithinPeriod as jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should get asteroids successfully', async () => {
-    (mapQueryToMeteorRequest as jest.Mock).mockReturnValue(meteorRequest);
-    (getAsteroidsWithinPeriod as jest.Mock).mockResolvedValue(asteroidsData);
+    mockMapQueryToMeteorRequest.mockReturnValue(meteorRequest);
+    mockGetAsteroidsWithinPeriod.mockResolvedValue(asteroidsData);
     await getAsteroids(req, res, next);
     expect(mapQueryToMeteorRequest).toHaveBeenCalledWith(query);
     expect(getAsteroidsWithinPeriod).toHaveBeenCalledWith(meteorRequest);
@@ -37,8 +39,8 @@ describe('asteroid api controller', () => {
     expect(next).not.toHaveBeenCalled();
   });
   it('should handle error when service throws error', async () => {
-    (mapQueryToMeteorRequest as jest.Mock).mockReturnValue(meteorRequest);
-    (getAsteroidsWithinPeriod as jest.Mock).mockRejectedValue(error);
+    mockMapQueryToMeteorRequest.mockReturnValue(meteorRequest);
+    mockGetAsteroidsWithinPeriod.mockRejectedValue(error);
     await getAsteroids(req, res, next);
     expect(mapQueryToMeteorRequest).toHaveBeenCalledWith(query);
     expect(getAsteroidsWithinPeriod).toHaveBeenCalledWith(meteorRequest);

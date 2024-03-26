@@ -28,14 +28,16 @@ describe('user api controller', () => {
     send: jest.fn(),
   } as unknown as Response;
   const next = jest.fn();
+  const mockMapQueryToUserRequest = mapQueryToUserRequest as jest.Mock;
+  const mockGetRoverPhotoUrl = getRoverPhotoUrl as jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should process user data and get rover photo', async () => {
-    (mapQueryToUserRequest as jest.Mock).mockReturnValue(userRequest);
-    (getRoverPhotoUrl as jest.Mock).mockResolvedValue(roverPhotoUrl);
+    mockMapQueryToUserRequest.mockReturnValue(userRequest);
+    mockGetRoverPhotoUrl.mockResolvedValue(roverPhotoUrl);
     await postUser(req, res, next);
     expect(mapQueryToUserRequest).toHaveBeenCalledWith(body);
     expect(processUserData).toHaveBeenCalledWith(userRequest);
@@ -44,8 +46,8 @@ describe('user api controller', () => {
     expect(next).not.toHaveBeenCalled();
   });
   it('should handle error when service throws error', async () => {
-    (mapQueryToUserRequest as jest.Mock).mockReturnValue(userRequest);
-    (getRoverPhotoUrl as jest.Mock).mockRejectedValue(error);
+    mockMapQueryToUserRequest.mockReturnValue(userRequest);
+    mockGetRoverPhotoUrl.mockRejectedValue(error);
     await postUser(req, res, next);
     expect(mapQueryToUserRequest).toHaveBeenCalledWith(body);
     expect(processUserData).toHaveBeenCalledWith(userRequest);
